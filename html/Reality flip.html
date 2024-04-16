@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tinder Web App</title>
+    <style>
+      .card iframe {
+        width: 100%;
+        height: 60%;
+        border: none;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #FFFFFF;
+        overflow-y: scroll;
+      }
+      .card {
+        position: relative;
+        width: 300px;
+        height: 400px;
+        background-color: cyan;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
+        overflow: hidden;
+      }
+      .card img {
+        width: 100%;
+        height: 60%;
+        object-fit: cover;
+      }
+      .card h2 {
+        margin: 10px;
+      }
+      .card .buttons {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10%;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-top: 1px solid #ddd;
+      }
+      .card .buttons button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .card .buttons button:first-child {
+        margin-right: 10px;
+      }
+      .card.swiped {
+        transform: rotateY(-180deg);
+        transition: transform 0.3s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Profile picture" />
+      <h2>John Doe</h2>
+      <div class="buttons">
+        <button>Like</button>
+        <button>Dislike</button>
+      </div>
+      <p id="counter">0</p>
+      <input type="text" id="message" placeholder="Enter message">
+    </div>
+    <script>
+      const card = document.querySelector('.card');
+      const buttons = document.querySelectorAll('.buttons button');
+      const messageInput = document.querySelector('#message');
+      let isSwiped = false;
+      let counter = 0;
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          if (!isSwiped) {
+            isSwiped = true;
+            card.classList.add('swiped');
+            counter++;
+
+            // Send a POST request to the server-side
+            fetch('/counter', { //endpoint here 
+              method: 'POST',
+              header: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ counter, message: messageInput.value })
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
