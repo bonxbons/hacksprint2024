@@ -1,0 +1,46 @@
+.keeping-up-with-the-kardashian-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+}
+.keeping-up-with-the-kardashian-sidebar {
+  width: 186px;
+  height: 1011px;
+  display: flex;
+  padding: var(--dl-space-space-twounits);
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--dl-color-brandcolors-lb);
+}
+.keeping-up-with-the-kardashian-nav {
+  flex: 0 0 auto;
+  width: 205px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.keeping-up-with-the-kardashian-icon {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+  margin-bottom: var(--dl-space-space-twounits);
+}
+.keeping-up-with-the-kardashian-text {
+  font-family: "Noto Sans";
+  margin-bottom: var(--dl-space-space-twounits);
+}
+.keeping-up-with-the-kardashian-text1 {
+  margin-bottom: var(--dl-space-space-twounits);
+}
+.keeping-up-with-the-kardashian-text2 {
+  margin-bottom: var(--dl-space-space-twounits);
+}
+@media(max-width: 767px) {
+  .keeping-up-with-the-kardashian-icon {
+    display: flex;
+  }
+}
